@@ -74,15 +74,44 @@ public class sem_2 {
 //         System.out.println(strOne.replace(startindex, endindex, "Что надо было написать ?"));
 //         }
 //             else  System.out.println("совпадений ненайдено");
- // Задача 4.
-// Сравнить время замены 3-5 значений в строке методом string replase и stringBilder replase 
+  
    
-StringBuilder strOne = new StringBuilder("Hello world");
-String strTwo = "Hello world";
-long begin = System.currentTimeMillis();
-System.out.println(strOne.replace(0, 0, strTwo)); // заменить например какие то буквы, это делали на семинаре
-long end = System.currentTimeMillis();
-System.out.println(end-begin);
+// StringBuilder strOne = new StringBuilder("Hello world");
+// String strTwo = "Hello world";
+// long begin = System.currentTimeMillis();
+// System.out.println(strOne.replace(0, 0, strTwo)); // заменить например какие то буквы, это делали на семинаре
+// long end = System.currentTimeMillis();
+// System.out.println(end-begin);
 
-      }
+
+//тренировка
+StringBuilder str = new StringBuilder("Hello=world");
+System.out.println(str.toString());
+//метод append
+// str.append(" word ").append(" ! ").append(" & ");
+// str.append(" word " + " " +" ! " + " "+" & ");
+// System.out.println(str);
+
+//метод revers
+// StringBuilder reverseStr = str.reverse();
+// System.out.println(reverseStr.toString());
+
+
+//метод IndexOf
+// int index = str.indexOf("=");
+// System.out.println(index);
+
+//метод deliteCharAt(0)
+// StringBuilder delitestr = str.deleteCharAt(5);
+// System.out.println(delitestr);
+
+//метод insert
+// str.insert(5, " равно ");
+// System.out.println(str);
+
+//метод replase
+str.replace(5, 6, " равно ");
+System.out.println(str.toString());
+
+}
 }
