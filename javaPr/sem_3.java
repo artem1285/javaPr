@@ -76,6 +76,10 @@ List<String>list = new ArrayList<String>();
     list.add("третий");
     list.add("четвертый");
     list.add("пятый");
+    list.add("Щ");
+    list.add("се");
+    list.add("Вос");
+    list.add("Девят");
     System.out.println( "просто список: " + list);
     for(String el: list){
         System.out.println("через foreach: " + el);
@@ -113,7 +117,24 @@ List<String>list = new ArrayList<String>();
         // и удалить все которые меньше этой длинны. Т.е. надо проверять 
         // длинну ,если онка меньше средней, то удалять ее. Надо 2 раза 
         // пробежаться по списку. Первый раз просто читать, второй удалять. 
-    }
+
+        int sum = 0;
+        iterator = list.listIterator(list.size()); //через итератор пробегаемся 
+        while (iterator.hasNext()){
+            String el  = iterator.next(); 
+            sum += el.length();      // берем элемент и в сумму добавляем 
+         }
+         int average = sum/ list.size|(); // среднее 
+            // опять пробежимся по списку 
+            terator = list.listIterator(list.size()); 
+                    while (iterator.hasNext()){
+                        String el  = iterator.next(); 
+                        if(el.length()) <average){
+                            iterator.remove(); 
+
+  }
+                    }
+                    System.out.println(list);
         }
     }
     
