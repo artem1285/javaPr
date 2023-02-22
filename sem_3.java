@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -76,36 +77,74 @@ List<String>list = new ArrayList<String>();
     list.add("третий");
     list.add("четвертый");
     list.add("пятый");
+    list.add("Щ");
+    list.add("Се");
+    list.add("Восе");
+    list.add("девят");
     System.out.println( "просто список: " + list);
     for(String el: list){
-        System.out.println("через foreach: " + el);
+    System.out.println("через foreach: " + el);
     }
-    System.out.println("* звездочка повторить 10 раз: " + "*".repeat(10));
 
+    System.out.println("* звездочка повторить 10 раз: " + "*".repeat(10));
     for (int i = 0; i<list.size();i++){
         System.out.println("через for: "+ list.get(i));
+    }
 
-    }
     ListIterator<String> iterator = list.listIterator();
-        while (iterator.hasNext()){
-            String el = iterator.next();
-            System.out.println("через цикл while: " + el);
-        }
-        // Задача 2.
-        // Сделать второй список и заполнить его данными из первого списка 
-        // в обратном порядке, двумя методами
-        List<String>list2 = new ArrayList<String>();
-        for (int i = list.size ()-1; i>=0;i--){
-            list2.add(list.get(i));
-            System.out.println(list2); // первый метод
-            // второй метод
-            ArrayList<String> list3 = new ArrayList<>();
-            iterator = list.listIterator(list.size()); // итератор надо создавать, так как тот что вверху, он работает один раз
-            while (iterator.hasPrevious()){
-           list3.add (iterator.previous());  
-        }
-        System.out.println(list3);
+    while (iterator.hasNext()){
+    String el = iterator.next();
+    System.out.println("через цикл while: " + el);
     }
-        }
+    
+    // Задача 2.
+    // Сделать второй список и заполнить его данными из первого списка 
+    // в обратном порядке, двумя методами
+    List<String>list2 = new ArrayList<String>();
+    for (int i = list.size ()-1; i>=0;i--){
+    list2.add(list.get(i));
+    System.out.println(list2); // первый метод
+    // второй метод
+    ArrayList<String> list3 = new ArrayList<>();
+    iterator = list.listIterator(list.size()); // итератор надо создавать, так как тот что вверху, он работает один раз
+    while (iterator.hasPrevious()){
+    list3.add (iterator.previous());  
     }
+    System.out.println(list3);
+    
+    // Задача 3
+    // Надо пробежаться по списку, найти среднюю длинну значений, 
+    // и удалить все которые меньше этой длинны. 
+    // Надо 2 раза пробежаться по списку. Первый раз просто читать, 
+    // второй удалять.  
+    // Считаем длинну строки и желим на количество итераций.
+    int sum = 0;
+    iterator = list.listIterator(); //через итератор пробегаемся 
+    while (iterator.hasNext()){
+    String el = iterator.next(); 
+    sum += el.length();     // берем элемент и в сумму добавляем 
+    }
+    int average = sum/ list.size(); // среднее 
+    // опять пробежимся по списку 
+    iterator = list.listIterator(); 
+    while (iterator.hasNext()){
+    String el = iterator.next(); 
+    if(el.length() <average){
+    iterator.remove(); 
+    }
+    }
+   System.out.println(list);
+
+    // Задача 4
+    // Надо что бы во втором списке остались те элементы которых 
+    // нет в первом. 
+    list.removeAll(list2);
+    System.out.println(list);
+
+    // сортировка
+    Collections.sort(list2);
+    list.forEach(n-> list3.add(0,n));
+}
+}
+}
     
