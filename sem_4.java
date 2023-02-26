@@ -2,7 +2,13 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Scanner;
-
+  /*Задание
+    1. Ввод с консоли в формате Ф.И.О Возраст пол
+    2. Выход из режима вода по горячей кнопке
+    3. Вывод несортированного списка в формате Иванов И.И.
+    4. Два варианта продолжения, либо вывод списка сортированного 
+    по возрасту либо завершение приложения.
+    */
 public class sem_4 {
     // класс пузырьковой сортировки, сортировать будем по возрасту
     public static void bubleSortAge(ArrayList<Integer>age,LinkedList <Integer> index){
@@ -29,27 +35,60 @@ public class sem_4 {
     }
     public static void sortGender(ArrayList<Boolean>gender,LinkedList <Integer> index){ 
       
-        LinkedList <Integer> indexTemp = new LinkedList<>();
-
-        int cnt = index.size()-1;
-        while (cnt > -1) {
-            if(! gender.get(index.get(cnt))){
-                int temp = index.get(cnt);
-                index.remove(cnt);
+        int i = 0;
+        int f = index.size();
+        while (i > -1) {
+            if(! gender.get(index.get(i))){
+                int temp = index.get(i);
+                index.remove(i);
                 index.add(temp);
-                cnt--; 
+                i++; 
             }
-            cnt--;     
+            i++;     
          }
         }
+
+        public static void sortGender2(ArrayList<Boolean> gender, LinkedList<Integer> index) {
+            LinkedList<Integer> indexM = new LinkedList<>();
+            LinkedList<Integer> indexW = new LinkedList<>();
+    
+            for (int i : index) {
+                if (!gender.get(index.get(i))) {
+                    indexW.add(index.get(i));
+                } else {
+                    indexM.add(index.get(i));
+                }
+            }
+            index.clear();
+            index.addAll(indexM);
+            index.addAll(indexW);
+        }
+    
+        public static void printData(ArrayList<String> lastName,
+                                     ArrayList<String> firstName,
+                                     ArrayList<String> patronymic,
+                                     ArrayList<Boolean> gender,
+                                     ArrayList<Integer> age,
+                                     LinkedList<Integer> index) {
+            for (int i : index) {
+                StringBuilder str = new StringBuilder();
+                str.append(lastName.get(i)).
+                        append(" ").
+                        append(firstName.get(i).charAt(0)).
+                        append(". ").
+                        append(patronymic.get(i).charAt(0)).
+                        append(". ").
+                        append(age.get(i)).
+                        append(". ").
+                        append(gender.get(i) ? "М" : "Ж");
+                System.out.println(str);
+            }
+            System.out.println("*".repeat(10));
+        }
+
+
         public static void main(String[] args) {
-   /*Задание
-    1. Ввод с консоли в формате Ф.И.О Возраст пол
-    2. Выход из режима вода по горячей кнопке
-    3. Вывод несортированного списка в формате Иванов И.И.
-    4. Два варианта продолжения, либо вывод списка сортированного 
-    по возрасту либо завершение приложения.
-    */
+ 
 
     // 1. Ввод с консоли в формате Ф.И.О Возраст пол
     LinkedList <Integer> index = new LinkedList<>(); //в него положили наши индексы
