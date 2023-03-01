@@ -72,8 +72,45 @@ hM.put("четыре", "аня");
 hM.putIfAbsent("десять", "Сергей");
 
 
-/*Задача 2
-Сделать два перебора и вывод на экран двумя разными переборами*/
 
+/*Задача 2
+Сделать два перебора и вывод на экран двумя разными переборами, 
+а потом изменить значения в HashMap, добавив <> скобки в начале 
+и в конце каждого значения. */
+hM.forEach((k,v) -> System.out.println (k + ": " + v));
+System.out.println("-".repeat(15));
+for (String v : hM.values()) {
+    System.out.println(v+ "! !");
+}
+System.out.println("-".repeat(15));
+for (String k : hM.keySet()) {
+    System.out.println(k+ ":" + hM.get(k));
+}
+System.out.println("-".repeat(15));
+//Теперь значение засунуть в <> скобки. В примере вывели всех в <>
+for (String key : hM.keySet()) {
+    hM.compute(key,(k,v)-> "<"+v+">");
+}
+System.out.println(hM);
+
+System.out.println("-".repeat(15));
+/*Задача 3
+Создать еще один HashMap и надо объединить значения с одинаковыми ключами. 
+Если такой ключ есть то берется значение, и складывается со значением текущей Map, 
+а если нет, то берется значение по умолчанию
+ */
+
+HashMap<String, String> hM2 = new HashMap<String, String>();
+hM2.put("ноль", "Оля");
+hM2.put("один", "Вася");
+hM2.put("два", "Юра");
+hM2.put("три", "Семен");
+hM2.put("четыре", "Петя");
+
+for(String k: hM2.keySet()){
+    // hM2.merge(k, hM.getOrDefault(k, " No"), String:: concat);
+    hM2.merge(k, hM.getOrDefault(k, " No"),(key, val)-> key + " +" + val);
+  System.out.println(hM2.get(k));  
+}
 }
 }
