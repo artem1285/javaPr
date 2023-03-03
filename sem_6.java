@@ -22,6 +22,7 @@ System.out.println(set.get(5));
 System.out.println(set.getArrayList());
 System.out.println(set.headSet(7));
 System.out.println(set.tailSet(7));
+System.out.println(set.subSet(7,9));
 
 }
 }
@@ -93,20 +94,24 @@ MySet tailSet (int data){
     }
     return res;
 }
-    /*SubSet. Вы даем два ключа и он возвращает MySet начиная с  */
+    /*SubSet. Выдаем два ключа и он возвращает MySet начиная с  */
     MySet subSet (int key1, int key2){
         MySet res = new MySet();
         boolean ad = false;
+        int stop = key1;
         for (int el : values.keySet()){
-            if(el == key1 || el == key2){
+            if(el == key1 && !ad){
                 ad = true;
+                stop = key2;
             }
-            if(ad){
+            if(el == key2 && !ad){
+               ad = true;
+             }
+               if(ad){
                 res.add(el);
-                if(el == key1 || el == key2){
+                if(el == stop){
                    break;
                 }
-
             }
         }
         return res;   
